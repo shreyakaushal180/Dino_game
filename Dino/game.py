@@ -18,13 +18,13 @@ DUCKING = [pygame.image.load(os.path.join("IMG-20241027-WA0006[1].png")),
            pygame.image.load(os.path.join("IMG-20241027-WA0007[1].png"))]
 
 
-STONE = pygame.image.load(os.path.join("84b72c20a9478d74c842efc08d12faf536d3fc78[1].png"))
+OBSTACLE1 = pygame.image.load(os.path.join("84b72c20a9478d74c842efc08d12faf536d3fc78[1].png"))
 
 
-STEM =  pygame.image.load(os.path.join("121154a8aad3786db95b9b1e803118b0039dce3d[1].png"))
+OBSTACLE2 =  pygame.image.load(os.path.join("121154a8aad3786db95b9b1e803118b0039dce3d[1].png"))
 
 
-BARREL =  pygame.image.load(os.path.join("2b3011abc95f2183d4257a94893d42f0077c51a1[1].png"))
+OBSTACLE3 =  pygame.image.load(os.path.join("2b3011abc95f2183d4257a94893d42f0077c51a1[1].png"))
 
 
 BIRD =    [pygame.image.load(os.path.join("IMG-20241027-WA0002[1].png")),
