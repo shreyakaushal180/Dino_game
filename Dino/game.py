@@ -150,7 +150,7 @@ def main():
     cloud = Cloud()
     game_speed = 14
     x_pos_bg = 0
-    y_pos_bg = 400
+    y_pos_bg = 600
     points = 0
     font = pygame.font.Font('freesansbold.ttf', 20)
     def score():
@@ -193,7 +193,15 @@ def main():
         score()
         clock.tick(30)
         pygame.display.update()
+<<<<<<< HEAD
 #preload obstacles
+=======
+               
+
+#                extends Node
+
+# #preload obstacles
+>>>>>>> 628090bbc5a7bbcd93c1d958d771808ed2c567d6
 # var stump_scene = preload("res://scenes/stump.tscn")
 # var rock_scene = preload("res://scenes/rock.tscn")
 # var barrel_scene = preload("res://scenes/barrel.tscn")
