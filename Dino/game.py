@@ -195,7 +195,7 @@ def main():
         pygame.display.update()
 <<<<<<< HEAD
 
-	class Obstacle:
+class Obstacle:
     def __init__(self, image, type):
         self.image = image
         self.type = type
@@ -324,4 +324,3 @@ def main():
 
 
 main()
-
