@@ -33,7 +33,7 @@ BIRD =    [pygame.image.load(os.path.join("Dino","IMG-20241027-WA0002[1].png")),
 
 GROUND = pygame.image.load(os.path.join("Dino","ground.png"))
 
-CLOUD = pygame.image.load(os.path.join("Dino", "Cloud.png"))
+UFO = pygame.image.load(os.path.join("Dino", "ufo (2).jpeg"))
 BG1 = pygame.image.load(os.path.join("Dino","plx-1.png"))
 
 
@@ -123,11 +123,11 @@ class Dinosaur:
     def draw(self,SCREEN):
         SCREEN.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
 
-class Cloud:
+class ufo:
     def __init__(self):
         self.x = SCREEN_WIDTH +random.randint(800, 1000)
         self.y = random.randint(50, 100)
-        self.image = CLOUD
+        self.image = UFO
         self.width = self.image.get_width()
 
     def update(self):
@@ -142,58 +142,57 @@ class Cloud:
         
 
 
-def main():
-    global game_speed, x_pos_bg, y_pos_bg,points,font
-    run = True
-    clock = pygame.time.Clock()
-    player = Dinosaur()
-    cloud = Cloud()
-    game_speed = 14
-    x_pos_bg = 0
-    y_pos_bg = 600
-    points = 0
-    font = pygame.font.Font('freesansbold.ttf', 20)
-    def score():
-        global points, game_speed
-        points += 1
-        if points % 100 == 0:
-            game_speed += 1
+# def main():
+#     global game_speed, x_pos_bg, y_pos_bg,points,font,Ufo
+#     run = True
+#     clock = pygame.time.Clock()
+#     player = Dinosaur()
+#     Ufo = ufo()
+#     game_speed = 14
+#     x_pos_bg = 0
+#     y_pos_bg = 600
+#     points = 0
+#     font = pygame.font.Font('freesansbold.ttf', 20)
+#     def score():
+#         global points, game_speed
+#         points += 1
+#         if points % 100 == 0:
+#             game_speed += 1
 
-        text = font.render("Points: " + str(points), True, (0, 0, 0))
-        textRect = text.get_rect()
-        textRect.center = (1000, 40)
-        SCREEN.blit(text, textRect)
+#         text = font.render("Points: " + str(points), True, (255,255,255))
+#         textRect = text.get_rect()
+#         textRect.center = (1000, 40)
+#         SCREEN.blit(text, textRect)
 
-    def background():
-        global x_pos_bg, y_pos_bg
-        image_width = GROUND.get_width()
-        SCREEN.blit(GROUND, (x_pos_bg, y_pos_bg))
-        SCREEN.blit(GROUND, (image_width + x_pos_bg, y_pos_bg))
-        if x_pos_bg <= -image_width:
-            SCREEN.blit(GROUND, (image_width + x_pos_bg, y_pos_bg))
-            x_pos_bg = 0
-        x_pos_bg -= game_speed
+#     def background():
+#         global x_pos_bg, y_pos_bg
+#         image_width = GROUND.get_width()
+#         SCREEN.blit(GROUND, (x_pos_bg, y_pos_bg))
+#         SCREEN.blit(GROUND, (image_width + x_pos_bg, y_pos_bg))
+#         if x_pos_bg <= -image_width:
+#             SCREEN.blit(GROUND, (image_width + x_pos_bg, y_pos_bg))
+#             x_pos_bg = 0
+#         x_pos_bg -= game_speed
 
-    while run:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
+#     while run:
+#         for event in pygame.event.get():
+#             if event.type == pygame.QUIT:
+#                 run = False
 
-        SCREEN.fill((255,255,255))
-        userInput = pygame.key.get_pressed()  
+#         SCREEN.fill((0,0,0))
+#         userInput = pygame.key.get_pressed()  
 
 
-        player.draw(SCREEN)
-        player.update(userInput)   
+#         player.draw(SCREEN)
+#         player.update(userInput)   
 
-        cloud.draw(SCREEN)
-        cloud.update()
+#         Ufo.draw(SCREEN)
+#         Ufo.update()
 
-        background()
-        score()
-        clock.tick(30)
-        pygame.display.update()
-<<<<<<< HEAD
+#         background()
+#         score()
+#         clock.tick(30)
+#         pygame.display.update()
 
 class Obstacle:
     def __init__(self, image, type):
@@ -240,14 +239,14 @@ class Bird(Obstacle):
 
 
 def main():
-    global game_speed, x_pos_bg, y_pos_bg, points, obstacles
+    global game_speed, x_pos_bg, y_pos_bg, points, obstacles,death_count,Ufo
     run = True
     clock = pygame.time.Clock()
     player = Dinosaur()
-    cloud = Cloud()
+    Ufo = ufo()
     game_speed = 20
     x_pos_bg = 0
-    y_pos_bg = 380
+    y_pos_bg = 600
     points = 0
     font = pygame.font.Font('freesansbold.ttf', 20)
     obstacles = []
@@ -259,18 +258,18 @@ def main():
         if points % 100 == 0:
             game_speed += 1
 
-        text = font.render("Points: " + str(points), True, (0, 0, 0))
+        text = font.render("Points: " + str(points), True, (255,255,255))
         textRect = text.get_rect()
         textRect.center = (1000, 40)
         SCREEN.blit(text, textRect)
 
     def background():
         global x_pos_bg, y_pos_bg
-        image_width = BG.get_width()
-        SCREEN.blit(BG, (x_pos_bg, y_pos_bg))
-        SCREEN.blit(BG, (image_width + x_pos_bg, y_pos_bg))
+        image_width = GROUND.get_width()
+        SCREEN.blit(GROUND, (x_pos_bg, y_pos_bg))
+        SCREEN.blit(GROUND, (image_width + x_pos_bg, y_pos_bg))
         if x_pos_bg <= -image_width:
-            SCREEN.blit(BG, (image_width + x_pos_bg, y_pos_bg))
+            SCREEN.blit(GROUND, (image_width + x_pos_bg, y_pos_bg))
             x_pos_bg = 0
         x_pos_bg -= game_speed
 
@@ -279,32 +278,32 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
 
-        SCREEN.fill((255, 255, 255))
+        SCREEN.fill((0,0,0))
         userInput = pygame.key.get_pressed()
 
         player.draw(SCREEN)
         player.update(userInput)
 
-        if len(obstacles) == 0:
-            if random.randint(0, 2) == 0:
-                obstacles.append(SmallCactus(SMALL_CACTUS))
-            elif random.randint(0, 2) == 1:
-                obstacles.append(LargeCactus(LARGE_CACTUS))
-            elif random.randint(0, 2) == 2:
-                obstacles.append(Bird(BIRD))
+        # if len(obstacles) == 0:
+        #     if random.randint(0, 2) == 0:
+        #         obstacles.append(SmallCactus(SMALL_CACTUS))
+        #     elif random.randint(0, 2) == 1:
+        #         obstacles.append(LargeCactus(LARGE_CACTUS))
+        #     elif random.randint(0, 2) == 2:
+        #         obstacles.append(Bird(BIRD))
 
-        for obstacle in obstacles:
-            obstacle.draw(SCREEN)
-            obstacle.update()
-            if player.dino_rect.colliderect(obstacle.rect):
-                pygame.time.delay(2000)
-                death_count += 1
-                menu(death_count)
+        # for obstacle in obstacles:
+        #     obstacle.draw(SCREEN)
+        #     obstacle.update()
+        #     if player.dino_rect.colliderect(obstacle.rect):
+        #         pygame.time.delay(2000)
+        #         death_count += 1
+        #         menu(death_count)
 
         background()
 
-        cloud.draw(SCREEN)
-        cloud.update()
+        Ufo.draw(SCREEN)
+        Ufo.update()
 
         score()
 
