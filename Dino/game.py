@@ -4,7 +4,7 @@ import random
 pygame.init()
 
 SCREEN_HEIGHT = 800
-SCREEN_WIDTH = 1500
+SCREEN_WIDTH = 1300
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 
 RUNNING = [pygame.image.load(os.path.join("Dino","1.png")),
@@ -30,22 +30,10 @@ OBSTACLE3 =  pygame.image.load(os.path.join("Dino","2b3011abc95f2183d4257a94893d
 BIRD =    [pygame.image.load(os.path.join("Dino","IMG-20241027-WA0002[1].png")),
           pygame.image.load(os.path.join("Dino","IMG-20241027-WA0008[1].png"))]
 
-
+test_surface = pygame.image.load(os.path.join("Dino","background.jpeg"))
 GROUND = pygame.image.load(os.path.join("Dino","ground.png"))
 
 UFO = pygame.image.load(os.path.join("Dino", "ufo (2).jpeg"))
-BG1 = pygame.image.load(os.path.join("Dino","plx-1.png"))
-
-
-BG2 = pygame.image.load(os.path.join("Dino","plx-2.png"))
-
-BG3 = pygame.image.load(os.path.join("Dino","plx-3.png"))
-
-BG4 = pygame.image.load(os.path.join("Dino","plx-4.png"))
-
-BG5 = pygame.image.load(os.path.join("Dino","plx-5.png"))
-
-
 
 class Dinosaur:
     X_POS = 80
@@ -273,6 +261,8 @@ def main():
             x_pos_bg = 0
         x_pos_bg -= game_speed
 
+
+
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -280,7 +270,7 @@ def main():
 
         SCREEN.fill((0,0,0))
         userInput = pygame.key.get_pressed()
-
+        SCREEN.blit(test_surface,(0,0))
         player.draw(SCREEN)
         player.update(userInput)
 
