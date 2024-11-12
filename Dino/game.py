@@ -18,10 +18,10 @@ DUCKING = [pygame.image.load(os.path.join("Dino","duck.png")),
           pygame.image.load(os.path.join("Dino","duck(2).png"))
           ]
 SMALL_CACTUS = [pygame.image.load(os.path.join("Dino", "obstacle1.png")),
-                pygame.image.load(os.path.join("Dino", "obstacle2.png")),
-                pygame.image.load(os.path.join("Dino", "obstacle3.png"))]
-LARGE_CACTUS = [pygame.image.load(os.path.join("Dino", "obstacle4.png")),
-                pygame.image.load(os.path.join("Dino", "obstacle5.png")),
+                pygame.image.load(os.path.join("Dino", "LargeCactus1.png")),
+                pygame.image.load(os.path.join("Dino", "LargeCactus1.png"))]
+LARGE_CACTUS = [pygame.image.load(os.path.join("Dino", "SmallCactus1.png")),
+                pygame.image.load(os.path.join("Dino", "SmallCactus2.png")),
                 pygame.image.load(os.path.join("Dino", "obstacle6.png"))]
 
 OBSTACLE1 = pygame.image.load(os.path.join("Dino","84b72c20a9478d74c842efc08d12faf536d3fc78[1].png"))
@@ -42,8 +42,8 @@ GROUND = pygame.image.load(os.path.join("Dino","road&border.png"))
 UFO = pygame.image.load(os.path.join("Dino", "spaceship.png"))
 class Dinosaur:
     X_POS = 50
-    Y_POS = 450
-    Y_POS_DUCK =550
+    Y_POS = 310
+    Y_POS_DUCK =410
     JUMP_VEL = 8.5
 
     def __init__(self):
@@ -185,7 +185,7 @@ def main():
     Ufo = ufo()
     game_speed = 20
     x_pos_bg = 0
-    y_pos_bg = 700
+    y_pos_bg = 550
     points = 0
     font = pygame.font.Font('freesansbold.ttf', 20)
     obstacles = []
