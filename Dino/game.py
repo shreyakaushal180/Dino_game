@@ -11,11 +11,12 @@ RUNNING = [pygame.image.load(os.path.join("Dino","Screenshot__93_-removebg-previ
            pygame.image.load(os.path.join("Dino","Screenshot__92_-removebg-preview.png"))]
 
 
-JUMPING = pygame.image.load(os.path.join("Dino","IMG-20241027-WA0005[1].png"))
+JUMPING = pygame.image.load(os.path.join("Dino","jump.png"))
 
 
-DUCKING = [pygame.image.load(os.path.join("Dino","IMG-20241027-WA0006[1].png")),
-           pygame.image.load(os.path.join("Dino","IMG-20241027-WA0007[1].png"))]
+DUCKING = [pygame.image.load(os.path.join("Dino","duck.png")),
+          # pygame.image.load(os.path.join("Dino","IMG-20241027-WA0007[1].png"))
+           ]
 
 
 OBSTACLE1 = pygame.image.load(os.path.join("Dino","84b72c20a9478d74c842efc08d12faf536d3fc78[1].png"))
@@ -35,9 +36,9 @@ GROUND = pygame.image.load(os.path.join("Dino","road&border.png"))
 
 UFO = pygame.image.load(os.path.join("Dino", "spaceship.png"))
 class Dinosaur:
-    X_POS = 25
+    X_POS = 50
     Y_POS = 450
-    Y_POS_DUCK =340
+    Y_POS_DUCK =480
     JUMP_VEL = 8.5
 
     def __init__(self):
@@ -86,7 +87,7 @@ class Dinosaur:
         self.dino_rect.x = self.X_POS
         self.dino_rect.y = self.Y_POS_DUCK
         self.step_index += 1
-        pass
+       
 
     def run(self):
         self.image = self.run_img [self.step_index // 5]
@@ -103,7 +104,8 @@ class Dinosaur:
             self.jump_vel -= 0.8
         if self.jump_vel < - self.JUMP_VEL:
             self.dino_jump = False
-        pass
+            self.jump_vel=self.JUMP_VEL
+       
         
 
 
@@ -232,6 +234,7 @@ def main():
         #         pygame.time.delay(2000)
         #         death_count += 1
         #         menu(death_count)
+
 
         background()
 
