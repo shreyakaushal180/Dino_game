@@ -51,6 +51,7 @@ class Dinosaur:
         self.dino_jump = False
 
         self.step_index = 0
+        self.jump_vel=self.JUMP_VEL #defined jump
         self.image = self.run_img[0]
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_POS
