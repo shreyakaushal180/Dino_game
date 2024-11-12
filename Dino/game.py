@@ -17,12 +17,12 @@ JUMPING = pygame.image.load(os.path.join("Dino","jump(3).png"))
 DUCKING = [pygame.image.load(os.path.join("Dino","duck.png")),
           pygame.image.load(os.path.join("Dino","duck(2).png"))
           ]
-SMALL_CACTUS = [pygame.image.load(os.path.join("Dino", "SmallCactus1.png")),
-                pygame.image.load(os.path.join("Dino", "SmallCactus2.png")),
-                pygame.image.load(os.path.join("Dino", "obstacle1.png"))]
-LARGE_CACTUS = [pygame.image.load(os.path.join("Dino", "LargeCactus1.png")),
-                pygame.image.load(os.path.join("Dino", "LargeCactus2.png")),
-                pygame.image.load(os.path.join("Dino", "obstacle2.png"))]
+SMALL_CACTUS = [pygame.image.load(os.path.join("Dino", "obstacle1.png")),
+                pygame.image.load(os.path.join("Dino", "obstacle2.png")),
+                pygame.image.load(os.path.join("Dino", "obstacle3.png"))]
+LARGE_CACTUS = [pygame.image.load(os.path.join("Dino", "obstacle4.png")),
+                pygame.image.load(os.path.join("Dino", "obstacle5.png")),
+                pygame.image.load(os.path.join("Dino", "obstacle6.png"))]
 
 OBSTACLE1 = pygame.image.load(os.path.join("Dino","84b72c20a9478d74c842efc08d12faf536d3fc78[1].png"))
 
@@ -33,8 +33,8 @@ OBSTACLE1 = pygame.image.load(os.path.join("Dino","84b72c20a9478d74c842efc08d12f
 OBSTACLE3 =  pygame.image.load(os.path.join("Dino","2b3011abc95f2183d4257a94893d42f0077c51a1[1].png"))
 
 
-BIRD =    [pygame.image.load(os.path.join("Dino","IMG-20241027-WA0002[1].png")),
-          pygame.image.load(os.path.join("Dino","IMG-20241027-WA0008[1].png"))]
+BIRD =    [pygame.image.load(os.path.join("Dino","bird1.png")),
+          pygame.image.load(os.path.join("Dino","bird2.png"))]
 
 test_surface = pygame.image.load(os.path.join("Dino","background.jpeg"))
 GROUND = pygame.image.load(os.path.join("Dino","road&border.png"))
@@ -225,21 +225,21 @@ def main():
         player.draw(SCREEN)
         player.update(userInput)
 
-        # if len(obstacles) == 0:
-        #     if random.randint(0, 2) == 0:
-        #         obstacles.append(SmallCactus(SMALL_CACTUS))
-        #     elif random.randint(0, 2) == 1:
-        #         obstacles.append(LargeCactus(LARGE_CACTUS))
-        #     elif random.randint(0, 2) == 2:
-        #         obstacles.append(Bird(BIRD))
+        if len(obstacles) == 0:
+            if random.randint(0, 2) == 0:
+                obstacles.append(SmallCactus(SMALL_CACTUS))
+            elif random.randint(0, 2) == 1:
+                obstacles.append(LargeCactus(LARGE_CACTUS))
+            elif random.randint(0, 2) == 2:
+                obstacles.append(Bird(BIRD))
 
-        # for obstacle in obstacles:
-        #     obstacle.draw(SCREEN)
-        #     obstacle.update()
-        #     if player.dino_rect.colliderect(obstacle.rect):
-        #         pygame.time.delay(2000)
-        #         death_count += 1
-        #         menu(death_count)
+        for obstacle in obstacles:
+            obstacle.draw(SCREEN)
+            obstacle.update()
+            if player.dino_rect.colliderect(obstacle.rect):
+                pygame.time.delay(2000)
+                death_count += 1
+                menu(death_count)
 
 
         background()
