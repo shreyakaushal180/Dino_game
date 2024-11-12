@@ -11,7 +11,7 @@ RUNNING = [pygame.image.load(os.path.join("Dino","Screenshot__93_-removebg-previ
            pygame.image.load(os.path.join("Dino","Screenshot__92_-removebg-preview.png"))]
 
 
-JUMPING = pygame.image.load(os.path.join("Dino","jump.png"))
+JUMPING = pygame.image.load(os.path.join("Dino","jump(3).png"))
 
 
 DUCKING = [pygame.image.load(os.path.join("Dino","duck.png")),
