@@ -15,7 +15,7 @@ JUMPING = pygame.image.load(os.path.join("Dino","jump.png"))
 
 
 DUCKING = [pygame.image.load(os.path.join("Dino","duck.png")),
-          # pygame.image.load(os.path.join("Dino","IMG-20241027-WA0007[1].png"))
+          pygame.image.load(os.path.join("Dino","duck2.png"))
            ]
 
 
@@ -38,7 +38,7 @@ UFO = pygame.image.load(os.path.join("Dino", "spaceship.png"))
 class Dinosaur:
     X_POS = 50
     Y_POS = 450
-    Y_POS_DUCK =480
+    Y_POS_DUCK =550
     JUMP_VEL = 8.5
 
     def __init__(self):
