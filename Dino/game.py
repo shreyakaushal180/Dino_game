@@ -31,13 +31,13 @@ BIRD =    [pygame.image.load(os.path.join("Dino","IMG-20241027-WA0002[1].png")),
           pygame.image.load(os.path.join("Dino","IMG-20241027-WA0008[1].png"))]
 
 test_surface = pygame.image.load(os.path.join("Dino","background.jpeg"))
-GROUND = pygame.image.load(os.path.join("Dino","ground.png"))
+GROUND = pygame.image.load(os.path.join("Dino","road&border.png"))
 
 UFO = pygame.image.load(os.path.join("Dino", "ufo (2).jpeg"))
 
 class Dinosaur:
-    X_POS = 80
-    Y_POS = 310
+    X_POS = 25
+    Y_POS = 450
     Y_POS_DUCK =340
     JUMP_VEL = 8.5
 
@@ -126,62 +126,6 @@ class ufo:
     def draw(self, SCREEN):
         SCREEN.blit(self.image, (self.x, self.y))
 
-
-        
-
-
-# def main():
-#     global game_speed, x_pos_bg, y_pos_bg,points,font,Ufo
-#     run = True
-#     clock = pygame.time.Clock()
-#     player = Dinosaur()
-#     Ufo = ufo()
-#     game_speed = 14
-#     x_pos_bg = 0
-#     y_pos_bg = 600
-#     points = 0
-#     font = pygame.font.Font('freesansbold.ttf', 20)
-#     def score():
-#         global points, game_speed
-#         points += 1
-#         if points % 100 == 0:
-#             game_speed += 1
-
-#         text = font.render("Points: " + str(points), True, (255,255,255))
-#         textRect = text.get_rect()
-#         textRect.center = (1000, 40)
-#         SCREEN.blit(text, textRect)
-
-#     def background():
-#         global x_pos_bg, y_pos_bg
-#         image_width = GROUND.get_width()
-#         SCREEN.blit(GROUND, (x_pos_bg, y_pos_bg))
-#         SCREEN.blit(GROUND, (image_width + x_pos_bg, y_pos_bg))
-#         if x_pos_bg <= -image_width:
-#             SCREEN.blit(GROUND, (image_width + x_pos_bg, y_pos_bg))
-#             x_pos_bg = 0
-#         x_pos_bg -= game_speed
-
-#     while run:
-#         for event in pygame.event.get():
-#             if event.type == pygame.QUIT:
-#                 run = False
-
-#         SCREEN.fill((0,0,0))
-#         userInput = pygame.key.get_pressed()  
-
-
-#         player.draw(SCREEN)
-#         player.update(userInput)   
-
-#         Ufo.draw(SCREEN)
-#         Ufo.update()
-
-#         background()
-#         score()
-#         clock.tick(30)
-#         pygame.display.update()
-
 class Obstacle:
     def __init__(self, image, type):
         self.image = image
@@ -234,7 +178,7 @@ def main():
     Ufo = ufo()
     game_speed = 20
     x_pos_bg = 0
-    y_pos_bg = 600
+    y_pos_bg = 700
     points = 0
     font = pygame.font.Font('freesansbold.ttf', 20)
     obstacles = []
