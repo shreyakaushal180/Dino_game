@@ -7,8 +7,8 @@ SCREEN_HEIGHT = 800
 SCREEN_WIDTH = 1300
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 
-RUNNING = [pygame.image.load(os.path.join("Dino",r"C:\Users\LENOVO\OneDrive\Desktop\Dino_game\Dino\Screenshot__93_-removebg-preview.png")),
-           pygame.image.load(os.path.join("Dino",r"C:\Users\LENOVO\OneDrive\Desktop\Dino_game\Dino\Screenshot__92_-removebg-preview.png"))]
+RUNNING = [pygame.image.load(os.path.join("Dino","Screenshot__93_-removebg-preview.png")),
+           pygame.image.load(os.path.join("Dino","Screenshot__92_-removebg-preview.png"))]
 
 
 JUMPING = pygame.image.load(os.path.join("Dino","IMG-20241027-WA0005[1].png"))
