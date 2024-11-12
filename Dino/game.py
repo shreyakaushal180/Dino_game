@@ -15,7 +15,7 @@ JUMPING = pygame.image.load(os.path.join("Dino","jump.png"))
 
 
 DUCKING = [pygame.image.load(os.path.join("Dino","duck.png")),
-          pygame.image.load(os.path.join("Dino","duck2.png"))
+          pygame.image.load(os.path.join("Dino","duck(2).png"))
           ]
 
 
