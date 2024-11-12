@@ -33,8 +33,7 @@ BIRD =    [pygame.image.load(os.path.join("Dino","IMG-20241027-WA0002[1].png")),
 test_surface = pygame.image.load(os.path.join("Dino","background.jpeg"))
 GROUND = pygame.image.load(os.path.join("Dino","road&border.png"))
 
-UFO = pygame.image.load(os.path.join("Dino", "ufo (2).jpeg"))
-
+UFO = pygame.image.load(os.path.join("Dino", "spaceship.png"))
 class Dinosaur:
     X_POS = 25
     Y_POS = 450
