@@ -17,12 +17,12 @@ JUMPING = pygame.image.load(os.path.join("Dino","jump(3).png"))
 DUCKING = [pygame.image.load(os.path.join("Dino","duck.png")),
           pygame.image.load(os.path.join("Dino","duck(2).png"))
           ]
-# SMALL_CACTUS = [pygame.image.load(os.path.join("Dino", "SmallCactus1.png")),
-#                 pygame.image.load(os.path.join("Dino", "SmallCactus2.png")),
-#                 pygame.image.load(os.path.join("Dino", "SmallCactus3.png"))]
-# LARGE_CACTUS = [pygame.image.load(os.path.join("Dino", "LargeCactus1.png")),
-#                 pygame.image.load(os.path.join("Dino", "LargeCactus2.png")),
-#                 pygame.image.load(os.path.join("Dino", "LargeCactus3.png"))]
+SMALL_CACTUS = [pygame.image.load(os.path.join("Dino", "SmallCactus1.png")),
+                pygame.image.load(os.path.join("Dino", "SmallCactus2.png")),
+                pygame.image.load(os.path.join("Dino", "obstacle1.png"))]
+LARGE_CACTUS = [pygame.image.load(os.path.join("Dino", "LargeCactus1.png")),
+                pygame.image.load(os.path.join("Dino", "LargeCactus2.png")),
+                pygame.image.load(os.path.join("Dino", "obstacle2.png"))]
 
 OBSTACLE1 = pygame.image.load(os.path.join("Dino","84b72c20a9478d74c842efc08d12faf536d3fc78[1].png"))
 
