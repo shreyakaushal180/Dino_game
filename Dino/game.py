@@ -17,12 +17,12 @@ JUMPING = pygame.image.load(os.path.join("Dino","jump(3).png"))
 DUCKING = [pygame.image.load(os.path.join("Dino","duck.png")),
           pygame.image.load(os.path.join("Dino","duck(2).png"))
           ]
-SMALL_CACTUS = [pygame.image.load(os.path.join("Dino", "obstacle1.png")),
-                pygame.image.load(os.path.join("Dino", "LargeCactus1.png")),
-                pygame.image.load(os.path.join("Dino", "LargeCactus1.png"))]
-LARGE_CACTUS = [pygame.image.load(os.path.join("Dino", "SmallCactus1.png")),
-                pygame.image.load(os.path.join("Dino", "SmallCactus2.png")),
-                pygame.image.load(os.path.join("Dino", "obstacle6.png"))]
+SMALL_MONSTER = [pygame.image.load(os.path.join("Dino", "ben10-spitter.png")),
+                pygame.image.load(os.path.join("Dino", "ben10-spitter.png")),
+                pygame.image.load(os.path.join("Dino", "ben10-spitter.png"))]
+LARGE_MONSTER = [pygame.image.load(os.path.join("Dino", "ben10-spitter.png")),
+                pygame.image.load(os.path.join("Dino", "ben10-spitter.png")),
+                pygame.image.load(os.path.join("Dino", "ben10-spitter.png"))]
 
 OBSTACLE1 = pygame.image.load(os.path.join("Dino","84b72c20a9478d74c842efc08d12faf536d3fc78[1].png"))
 
@@ -227,9 +227,9 @@ def main():
 
         if len(obstacles) == 0:
             if random.randint(0, 2) == 0:
-                obstacles.append(SmallCactus(SMALL_CACTUS))
+                obstacles.append(SmallCactus(SMALL_MONSTER))
             elif random.randint(0, 2) == 1:
-                obstacles.append(LargeCactus(LARGE_CACTUS))
+                obstacles.append(LargeCactus(LARGE_MONSTER))
             elif random.randint(0, 2) == 2:
                 obstacles.append(Bird(BIRD))
 
