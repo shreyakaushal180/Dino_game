@@ -33,8 +33,8 @@ OBSTACLE1 = pygame.image.load(os.path.join("Dino","84b72c20a9478d74c842efc08d12f
 OBSTACLE3 =  pygame.image.load(os.path.join("Dino","2b3011abc95f2183d4257a94893d42f0077c51a1[1].png"))
 
 
-BIRD =    [pygame.image.load(os.path.join("Dino","bird1.png")),
-          pygame.image.load(os.path.join("Dino","bird2.png"))]
+BIRD =    [pygame.image.load(os.path.join("Dino","fly1 (1).png")),
+          pygame.image.load(os.path.join("Dino","fly2 (1).png"))]
 
 test_surface = pygame.image.load(os.path.join("Dino","background.jpeg"))
 GROUND = pygame.image.load(os.path.join("Dino","road&border.png"))
@@ -269,7 +269,7 @@ def menu(death_count):
         textRect = text.get_rect()
         textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
         SCREEN.blit(text, textRect)
-        SCREEN.blit(RUNNING[0], (SCREEN_WIDTH // 2 - 20, SCREEN_HEIGHT // 2 - 140))
+        SCREEN.blit(RUNNING[1], (SCREEN_WIDTH // 2 - 20, SCREEN_HEIGHT // 2 - 140))
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
