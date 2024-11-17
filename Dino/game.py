@@ -7,15 +7,15 @@ SCREEN_HEIGHT = 800
 SCREEN_WIDTH = 1300
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 
-RUNNING = [pygame.image.load(os.path.join("Dino","Screenshot__93_-removebg-preview.png")),
-           pygame.image.load(os.path.join("Dino","Screenshot__92_-removebg-preview.png"))]
+RUNNING = [pygame.image.load(os.path.join("Dino","run1 (1).png")),
+           pygame.image.load(os.path.join("Dino","run2 (1).png"))]
 
 
-JUMPING = pygame.image.load(os.path.join("Dino","jump(3).png"))
+JUMPING = pygame.image.load(os.path.join("Dino","jump (2) (1).png"))
 
 
-DUCKING = [pygame.image.load(os.path.join("Dino","duck.png")),
-          pygame.image.load(os.path.join("Dino","duck(2).png"))
+DUCKING = [pygame.image.load(os.path.join("Dino","crouch1 (1).png")),
+          pygame.image.load(os.path.join("Dino","crouch2 (1).png"))
           ]
 SMALL_MONSTER = [pygame.image.load(os.path.join("Dino", "ben10-spitter.png")),
                 pygame.image.load(os.path.join("Dino", "ben10-spitter.png")),
