@@ -42,8 +42,8 @@ GROUND = pygame.image.load(os.path.join("Dino","road&border.png"))
 UFO = pygame.image.load(os.path.join("Dino", "spaceship.png"))
 class Dinosaur:
     X_POS = 50
-    Y_POS = 310
-    Y_POS_DUCK =410
+    Y_POS = 500
+    Y_POS_DUCK =550
     JUMP_VEL = 8.5
 
     def __init__(self):
@@ -153,21 +153,21 @@ class SmallCactus(Obstacle):
     def __init__(self, image):
         self.type = random.randint(0, 2)
         super().__init__(image, self.type)
-        self.rect.y = 325
+        self.rect.y = 525
 
 
 class LargeCactus(Obstacle):
     def __init__(self, image):
         self.type = random.randint(0, 2)
         super().__init__(image, self.type)
-        self.rect.y = 300
+        self.rect.y = 500
 
 
 class Bird(Obstacle):
     def __init__(self, image):
         self.type = 0
         super().__init__(image, self.type)
-        self.rect.y = 250
+        self.rect.y = 450
         self.index = 0
 
     def draw(self, SCREEN):
@@ -185,7 +185,7 @@ def main():
     Ufo = ufo()
     game_speed = 20
     x_pos_bg = 0
-    y_pos_bg = 550
+    y_pos_bg = 600
     points = 0
     font = pygame.font.Font('freesansbold.ttf', 20)
     obstacles = []
