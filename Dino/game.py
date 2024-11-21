@@ -25,15 +25,6 @@ LARGE_MONSTER = [pygame.image.load(os.path.join("Dino", "ben10-spitter.png")),
                 pygame.image.load(os.path.join("Dino", "ben10-spitter.png")),
                 pygame.image.load(os.path.join("Dino", "ben10-spitter.png"))]
 
-OBSTACLE1 = pygame.image.load(os.path.join("Dino","84b72c20a9478d74c842efc08d12faf536d3fc78[1].png"))
-
-
-# OBSTACLE2 =  pygame.image.load(os.path.join("Dino","121154a8aad3786db95b9b1e803118b0039dce3d[1].png"))
-
-
-OBSTACLE3 =  pygame.image.load(os.path.join("Dino","2b3011abc95f2183d4257a94893d42f0077c51a1[1].png"))
-
-
 BIRD =    [pygame.image.load(os.path.join("Dino","fly1 (1).png")),
           pygame.image.load(os.path.join("Dino","fly2 (1).png"))]
 
