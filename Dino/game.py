@@ -3,10 +3,11 @@ import os
 import random
 pygame.init()
 
-SCREEN_HEIGHT = 800
+SCREEN_HEIGHT = 800 #screen dimensions
 SCREEN_WIDTH = 1300
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 
+#assets loaded
 RUNNING = [pygame.image.load(os.path.join("Dino","run1 (1).png")),
            pygame.image.load(os.path.join("Dino","run2 (1).png"))]
 
@@ -24,15 +25,6 @@ LARGE_MONSTER = [pygame.image.load(os.path.join("Dino", "D.png")),
                 pygame.image.load(os.path.join("Dino", "E.png")),
                 pygame.image.load(os.path.join("Dino", "F.png"))]
 
-OBSTACLE1 = pygame.image.load(os.path.join("Dino","84b72c20a9478d74c842efc08d12faf536d3fc78[1].png"))
-
-
-# OBSTACLE2 =  pygame.image.load(os.path.join("Dino","121154a8aad3786db95b9b1e803118b0039dce3d[1].png"))
-
-
-OBSTACLE3 =  pygame.image.load(os.path.join("Dino","2b3011abc95f2183d4257a94893d42f0077c51a1[1].png"))
-
-
 BIRD =    [pygame.image.load(os.path.join("Dino","fly1 (1).png")),
           pygame.image.load(os.path.join("Dino","fly2 (1).png"))]
 
@@ -40,7 +32,8 @@ test_surface = pygame.image.load(os.path.join("Dino","background.jpeg"))
 GROUND = pygame.image.load(os.path.join("Dino","road&border.png"))
 
 UFO = pygame.image.load(os.path.join("Dino", "spaceship.png"))
-class Dinosaur:
+class Dinosaur:#class to manage player's character
+    #Intial positions
     X_POS = 50
     Y_POS = 500
     Y_POS_DUCK =550
@@ -55,24 +48,27 @@ class Dinosaur:
         self.dino_run = True
         self.dino_jump = False
 
-        self.step_index = 0
+        self.step_index = 0 #step for animations
         self.jump_vel=self.JUMP_VEL #defined jump
-        self.image = self.run_img[0]
+        self.image = self.run_img[0] #initial image of player
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_POS
         self.dino_rect.y = self.Y_POS
 
 
     def update(self, userInput):
+        #updated player's state
         if self.dino_duck:
             self.duck()
         if self.dino_run:
             self.run()
         if self.dino_jump:
             self.jump()
-
+#Reset animation index
         if self.step_index >= 10:
             self.step_index = 0
+
+#handling for jump ,duck and run
 
         if userInput[pygame.K_UP] and not self.dino_jump:
             self.dino_duck = False
@@ -114,7 +110,7 @@ class Dinosaur:
        
         
 
-
+#draw the player on the screen
     def draw(self,SCREEN):
         SCREEN.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
 
@@ -125,7 +121,7 @@ class ufo:
         self.image = UFO
         self.width = self.image.get_width()
 
-    def update(self):
+    def update(self):#move ufo leftward; reset when out of screen
         self.x -= game_speed
         if self.x < -self.width:
             self.x = SCREEN_WIDTH +random.randint(2500, 3000)
@@ -133,6 +129,7 @@ class ufo:
     def draw(self, SCREEN):
         SCREEN.blit(self.image, (self.x, self.y))
 
+#Base obstacle class
 class Obstacle:
     def __init__(self, image, type):
         self.image = image
@@ -177,7 +174,7 @@ class Bird(Obstacle):
         self.index += 1
 
 
-def main():
+def main():#Main loop
     global game_speed, x_pos_bg, y_pos_bg, points, obstacles,death_count,Ufo
     run = True
     clock = pygame.time.Clock()
@@ -191,7 +188,7 @@ def main():
     obstacles = []
     death_count = 0
 
-    def score():
+    def score():#Scoring function for game
         global points, game_speed
         points += 1
         if points % 100 == 0:
@@ -202,7 +199,7 @@ def main():
         textRect.center = (1000, 40)
         SCREEN.blit(text, textRect)
 
-    def background():
+    def background():#updation of background
         global x_pos_bg, y_pos_bg
         image_width = GROUND.get_width()
         SCREEN.blit(GROUND, (x_pos_bg, y_pos_bg))
