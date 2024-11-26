@@ -6,14 +6,11 @@ pygame.init()
 SCREEN_HEIGHT = 800 #screen dimensions
 SCREEN_WIDTH = 1300
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
-
 #assets loaded
 RUNNING = [pygame.image.load(os.path.join("Dino","run1 (1).png")),
            pygame.image.load(os.path.join("Dino","run2 (1).png"))]
 
-
 JUMPING = pygame.image.load(os.path.join("Dino","jump (2) (1).png"))
-
 
 DUCKING = [pygame.image.load(os.path.join("Dino","crouch1 (1).png")),
           pygame.image.load(os.path.join("Dino","crouch2 (1).png"))
@@ -55,7 +52,6 @@ class Dinosaur:#class to manage player's character
         self.dino_rect.x = self.X_POS
         self.dino_rect.y = self.Y_POS
 
-
     def update(self, userInput):
         #updated player's state
         if self.dino_duck:
@@ -90,14 +86,12 @@ class Dinosaur:#class to manage player's character
         self.dino_rect.y = self.Y_POS_DUCK
         self.step_index += 1
        
-
     def run(self):
         self.image = self.run_img [self.step_index // 5]
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_POS
         self.dino_rect.y = self.Y_POS
         self.step_index += 1
-
 
     def jump(self):
         self.image = self.jump_img
@@ -108,8 +102,6 @@ class Dinosaur:#class to manage player's character
             self.dino_jump = False
             self.jump_vel=self.JUMP_VEL
        
-        
-
 #draw the player on the screen
     def draw(self,SCREEN):
         SCREEN.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
@@ -128,7 +120,6 @@ class ufo:
             self.y = random.randint(50, 100)
     def draw(self, SCREEN):
         SCREEN.blit(self.image, (self.x, self.y))
-
 #Base obstacle class
 class Obstacle:
     def __init__(self, image, type):
@@ -145,20 +136,17 @@ class Obstacle:
     def draw(self, SCREEN):
         SCREEN.blit(self.image[self.type], self.rect)
 
-
 class SmallCactus(Obstacle):
     def __init__(self, image):
         self.type = random.randint(0, 2)
         super().__init__(image, self.type)
         self.rect.y = 525
 
-
 class LargeCactus(Obstacle):
     def __init__(self, image):
         self.type = random.randint(0, 2)
         super().__init__(image, self.type)
         self.rect.y = 500
-
 
 class Bird(Obstacle):
     def __init__(self, image):
@@ -172,7 +160,6 @@ class Bird(Obstacle):
             self.index = 0
         SCREEN.blit(self.image[self.index//5], self.rect)
         self.index += 1
-
 
 def main():#Main loop
     global game_speed, x_pos_bg, y_pos_bg, points, obstacles,death_count,Ufo
@@ -198,7 +185,6 @@ def main():#Main loop
         textRect = text.get_rect()
         textRect.center = (1000, 40)
         SCREEN.blit(text, textRect)
-
     def background():#updation of background
         global x_pos_bg, y_pos_bg
         image_width = GROUND.get_width()
@@ -208,8 +194,6 @@ def main():#Main loop
             SCREEN.blit(GROUND, (image_width + x_pos_bg, y_pos_bg))
             x_pos_bg = 0
         x_pos_bg -= game_speed
-
-
 
     while run:
         for event in pygame.event.get():
@@ -229,7 +213,6 @@ def main():#Main loop
                 obstacles.append(LargeCactus(LARGE_MONSTER))
             elif random.randint(0, 2) == 2:
                 obstacles.append(Bird(BIRD))
-
         for obstacle in obstacles:
             obstacle.draw(SCREEN)
             obstacle.update()
@@ -237,15 +220,10 @@ def main():#Main loop
                 pygame.time.delay(2000)
                 death_count += 1
                 menu(death_count)
-
-
         background()
-
         Ufo.draw(SCREEN)
         Ufo.update()
-
         score()
-
         clock.tick(30)
         pygame.display.update()
 def menu(death_count):
@@ -274,8 +252,6 @@ def menu(death_count):
                 run = False
             if event.type == pygame.KEYDOWN:
                 main()
-
-
 menu(death_count=0)
                
 
@@ -289,4 +265,4 @@ menu(death_count=0)
 
 
 
-# main()
+
