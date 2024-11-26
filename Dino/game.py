@@ -7,12 +7,12 @@ SCREEN_HEIGHT = 800 #screen dimensions
 SCREEN_WIDTH = 1300
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 #assets loaded
-RUNNING = [pygame.image.load(os.path.join("Dino","run1 (1).png")),
+RUN = [pygame.image.load(os.path.join("Dino","run1 (1).png")),
            pygame.image.load(os.path.join("Dino","run2 (1).png"))]
 
-JUMPING = pygame.image.load(os.path.join("Dino","jump (2) (1).png"))
+JUMP = pygame.image.load(os.path.join("Dino","jump (2) (1).png"))
 
-DUCKING = [pygame.image.load(os.path.join("Dino","crouch1 (1).png")),
+DUCK = [pygame.image.load(os.path.join("Dino","crouch1 (1).png")),
           pygame.image.load(os.path.join("Dino","crouch2 (1).png"))
           ]
 SMALL_MONSTER = [pygame.image.load(os.path.join("Dino", "A.png")),
@@ -25,11 +25,11 @@ LARGE_MONSTER = [pygame.image.load(os.path.join("Dino", "D.png")),
 BIRD =    [pygame.image.load(os.path.join("Dino","fly1 (1).png")),
           pygame.image.load(os.path.join("Dino","fly2 (1).png"))]
 
-test_surface = pygame.image.load(os.path.join("Dino","background.jpeg"))
-GROUND = pygame.image.load(os.path.join("Dino","road&border.png"))
+background_surface = pygame.image.load(os.path.join("Dino","background.jpeg"))
+ROAD = pygame.image.load(os.path.join("Dino","road&border.png"))
 
-UFO = pygame.image.load(os.path.join("Dino", "spaceship.png"))
-class Dinosaur:#class to manage player's character
+SPACESHIP = pygame.image.load(os.path.join("Dino", "spaceship.png"))
+class Player:#class to manage player's character
     #Intial positions
     X_POS = 50
     Y_POS = 500
@@ -37,11 +37,11 @@ class Dinosaur:#class to manage player's character
     JUMP_VEL = 8.5
 
     def __init__(self):
-        self.duck_img = DUCKING
-        self.run_img = RUNNING
-        self.jump_img = JUMPING
+        self.duck_img = DUCK
+        self.run_img = RUN
+        self.jump_img = JUMP
 
-        self.dino_duck = False
+        self.player_duck = False
         self.dino_run = True
         self.dino_jump = False
 
@@ -54,7 +54,7 @@ class Dinosaur:#class to manage player's character
 
     def update(self, userInput):
         #updated player's state
-        if self.dino_duck:
+        if self.player_duck:
             self.duck()
         if self.dino_run:
             self.run()
@@ -67,15 +67,15 @@ class Dinosaur:#class to manage player's character
 #handling for jump ,duck and run
 
         if userInput[pygame.K_UP] and not self.dino_jump:
-            self.dino_duck = False
+            self.player_duck = False
             self.dino_run = False
             self.dino_jump = True
         elif userInput[pygame.K_DOWN] and not self.dino_jump:
-            self.dino_duck = True
+            self.player_duck = True
             self.dino_run = False
             self.dino_jump = False
         elif not (self.dino_jump or userInput[pygame.K_DOWN]):
-            self.dino_duck = False
+            self.player_duck = False
             self.dino_run = True
             self.dino_jump = False
 
@@ -106,11 +106,11 @@ class Dinosaur:#class to manage player's character
     def draw(self,SCREEN):
         SCREEN.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
 
-class ufo:
+class spaceship:
     def __init__(self):
         self.x = SCREEN_WIDTH +random.randint(800, 1000)
         self.y = random.randint(50, 100)
-        self.image = UFO
+        self.image = SPACESHIP
         self.width = self.image.get_width()
 
     def update(self):#move ufo leftward; reset when out of screen
@@ -136,13 +136,13 @@ class Obstacle:
     def draw(self, SCREEN):
         SCREEN.blit(self.image[self.type], self.rect)
 
-class SmallCactus(Obstacle):
+class SmallMonster(Obstacle):
     def __init__(self, image):
         self.type = random.randint(0, 2)
         super().__init__(image, self.type)
         self.rect.y = 525
 
-class LargeCactus(Obstacle):
+class LargeMonster(Obstacle):
     def __init__(self, image):
         self.type = random.randint(0, 2)
         super().__init__(image, self.type)
@@ -165,8 +165,8 @@ def main():#Main loop
     global game_speed, x_pos_bg, y_pos_bg, points, obstacles,death_count,Ufo
     run = True
     clock = pygame.time.Clock()
-    player = Dinosaur()
-    Ufo = ufo()
+    player = Player()
+    Ufo = spaceship()
     game_speed = 20
     x_pos_bg = 0
     y_pos_bg = 600
@@ -187,11 +187,11 @@ def main():#Main loop
         SCREEN.blit(text, textRect)
     def background():#updation of background
         global x_pos_bg, y_pos_bg
-        image_width = GROUND.get_width()
-        SCREEN.blit(GROUND, (x_pos_bg, y_pos_bg))
-        SCREEN.blit(GROUND, (image_width + x_pos_bg, y_pos_bg))
+        image_width = ROAD.get_width()
+        SCREEN.blit(ROAD, (x_pos_bg, y_pos_bg))
+        SCREEN.blit(ROAD, (image_width + x_pos_bg, y_pos_bg))
         if x_pos_bg <= -image_width:
-            SCREEN.blit(GROUND, (image_width + x_pos_bg, y_pos_bg))
+            SCREEN.blit(ROAD, (image_width + x_pos_bg, y_pos_bg))
             x_pos_bg = 0
         x_pos_bg -= game_speed
 
@@ -202,15 +202,15 @@ def main():#Main loop
 
         SCREEN.fill((0,0,0))
         userInput = pygame.key.get_pressed()
-        SCREEN.blit(test_surface,(0,0))
+        SCREEN.blit(background_surface,(0,0))
         player.draw(SCREEN)
         player.update(userInput)
 
         if len(obstacles) == 0:
             if random.randint(0, 2) == 0:
-                obstacles.append(SmallCactus(SMALL_MONSTER))
+                obstacles.append(SmallMonster(SMALL_MONSTER))
             elif random.randint(0, 2) == 1:
-                obstacles.append(LargeCactus(LARGE_MONSTER))
+                obstacles.append(LargeMonster(LARGE_MONSTER))
             elif random.randint(0, 2) == 2:
                 obstacles.append(Bird(BIRD))
         for obstacle in obstacles:
@@ -244,7 +244,7 @@ def menu(death_count):
         textRect = text.get_rect()
         textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
         SCREEN.blit(text, textRect)
-        SCREEN.blit(RUNNING[1], (SCREEN_WIDTH // 2 - 20, SCREEN_HEIGHT // 2 - 140))
+        SCREEN.blit(RUN[1], (SCREEN_WIDTH // 2 - 20, SCREEN_HEIGHT // 2 - 140))
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -253,16 +253,3 @@ def menu(death_count):
             if event.type == pygame.KEYDOWN:
                 main()
 menu(death_count=0)
-               
-
-
-
-
-
-
-
-
-
-
-
-
