@@ -17,12 +17,12 @@ JUMPING = pygame.image.load(os.path.join("Dino","jump (2) (1).png"))
 DUCKING = [pygame.image.load(os.path.join("Dino","crouch1 (1).png")),
           pygame.image.load(os.path.join("Dino","crouch2 (1).png"))
           ]
-SMALL_MONSTER = [pygame.image.load(os.path.join("Dino", "ben10-spitter.png")),
-                pygame.image.load(os.path.join("Dino", "ben10-spitter.png")),
-                pygame.image.load(os.path.join("Dino", "ben10-spitter.png"))]
-LARGE_MONSTER = [pygame.image.load(os.path.join("Dino", "ben10-spitter.png")),
-                pygame.image.load(os.path.join("Dino", "ben10-spitter.png")),
-                pygame.image.load(os.path.join("Dino", "ben10-spitter.png"))]
+SMALL_MONSTER = [pygame.image.load(os.path.join("Dino", "A.png")),
+                pygame.image.load(os.path.join("Dino", "B.png")),
+                pygame.image.load(os.path.join("Dino", "C.png"))]
+LARGE_MONSTER = [pygame.image.load(os.path.join("Dino", "D.png")),
+                pygame.image.load(os.path.join("Dino", "E.png")),
+                pygame.image.load(os.path.join("Dino", "F.png"))]
 
 OBSTACLE1 = pygame.image.load(os.path.join("Dino","84b72c20a9478d74c842efc08d12faf536d3fc78[1].png"))
 
