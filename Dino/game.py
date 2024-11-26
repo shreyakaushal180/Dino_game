@@ -6,11 +6,11 @@ SCREEN_HEIGHT = 800 #screen dimensions
 SCREEN_WIDTH = 1300
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 #assets loaded
-RUN = [pygame.image.load(os.path.join("Dino","run1 (1).png")),
-           pygame.image.load(os.path.join("Dino","run2 (1).png"))]
-JUMP = pygame.image.load(os.path.join("Dino","jump (2) (1).png"))
-DUCK = [pygame.image.load(os.path.join("Dino","crouch1 (1).png")),
-          pygame.image.load(os.path.join("Dino","crouch2 (1).png"))]
+RUN = [pygame.image.load(os.path.join("Dino","run1.png")),
+           pygame.image.load(os.path.join("Dino","run2.png"))]
+JUMP = pygame.image.load(os.path.join("Dino","jump.png"))
+DUCK = [pygame.image.load(os.path.join("Dino","crouch1.png")),
+          pygame.image.load(os.path.join("Dino","crouch2.png"))]
 
 SMALL_MONSTER = [pygame.image.load(os.path.join("Dino", "A.png")),
                 pygame.image.load(os.path.join("Dino", "B.png")),
@@ -18,8 +18,8 @@ SMALL_MONSTER = [pygame.image.load(os.path.join("Dino", "A.png")),
 LARGE_MONSTER = [pygame.image.load(os.path.join("Dino", "D.png")),
                 pygame.image.load(os.path.join("Dino", "E.png")),
                 pygame.image.load(os.path.join("Dino", "F.png"))]
-BIRD =    [pygame.image.load(os.path.join("Dino","fly1 (1).png")),
-          pygame.image.load(os.path.join("Dino","fly2 (1).png"))]
+BIRD =    [pygame.image.load(os.path.join("Dino","fly1.png")),
+          pygame.image.load(os.path.join("Dino","fly2.png"))]
 
 background_surface = pygame.image.load(os.path.join("Dino","background.jpeg"))
 ROAD = pygame.image.load(os.path.join("Dino","road&border.png"))
