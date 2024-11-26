@@ -2,36 +2,31 @@ import pygame
 import os
 import random
 pygame.init()
-
 SCREEN_HEIGHT = 800 #screen dimensions
 SCREEN_WIDTH = 1300
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 #assets loaded
 RUN = [pygame.image.load(os.path.join("Dino","run1 (1).png")),
            pygame.image.load(os.path.join("Dino","run2 (1).png"))]
-
 JUMP = pygame.image.load(os.path.join("Dino","jump (2) (1).png"))
-
 DUCK = [pygame.image.load(os.path.join("Dino","crouch1 (1).png")),
-          pygame.image.load(os.path.join("Dino","crouch2 (1).png"))
-          ]
+          pygame.image.load(os.path.join("Dino","crouch2 (1).png"))]
+
 SMALL_MONSTER = [pygame.image.load(os.path.join("Dino", "A.png")),
                 pygame.image.load(os.path.join("Dino", "B.png")),
                 pygame.image.load(os.path.join("Dino", "C.png"))]
 LARGE_MONSTER = [pygame.image.load(os.path.join("Dino", "D.png")),
                 pygame.image.load(os.path.join("Dino", "E.png")),
                 pygame.image.load(os.path.join("Dino", "F.png"))]
-
 BIRD =    [pygame.image.load(os.path.join("Dino","fly1 (1).png")),
           pygame.image.load(os.path.join("Dino","fly2 (1).png"))]
 
 background_surface = pygame.image.load(os.path.join("Dino","background.jpeg"))
 ROAD = pygame.image.load(os.path.join("Dino","road&border.png"))
-
 SPACESHIP = pygame.image.load(os.path.join("Dino", "spaceship.png"))
+
 class Player:#class to manage player's character
-    #Intial positions
-    X_POS = 50
+    X_POS = 50 #Intial positions
     Y_POS = 500
     Y_POS_DUCK =550
     JUMP_VEL = 8.5
@@ -42,69 +37,66 @@ class Player:#class to manage player's character
         self.jump_img = JUMP
 
         self.player_duck = False
-        self.dino_run = True
-        self.dino_jump = False
+        self.player_run = True
+        self.player_jump = False
 
         self.step_index = 0 #step for animations
         self.jump_vel=self.JUMP_VEL #defined jump
         self.image = self.run_img[0] #initial image of player
-        self.dino_rect = self.image.get_rect()
-        self.dino_rect.x = self.X_POS
-        self.dino_rect.y = self.Y_POS
+        self.player_rect = self.image.get_rect()
+        self.player_rect.x = self.X_POS
+        self.player_rect.y = self.Y_POS
 
     def update(self, userInput):
         #updated player's state
         if self.player_duck:
             self.duck()
-        if self.dino_run:
+        if self.player_run:
             self.run()
-        if self.dino_jump:
+        if self.player_jump:
             self.jump()
-#Reset animation index
-        if self.step_index >= 10:
+        if self.step_index >= 10: #Reset animation index
             self.step_index = 0
 
 #handling for jump ,duck and run
-
-        if userInput[pygame.K_UP] and not self.dino_jump:
+        if userInput[pygame.K_UP] and not self.player_jump:
             self.player_duck = False
-            self.dino_run = False
-            self.dino_jump = True
-        elif userInput[pygame.K_DOWN] and not self.dino_jump:
+            self.player_run = False
+            self.player_jump = True
+        elif userInput[pygame.K_DOWN] and not self.player_jump:
             self.player_duck = True
-            self.dino_run = False
-            self.dino_jump = False
-        elif not (self.dino_jump or userInput[pygame.K_DOWN]):
+            self.player_run = False
+            self.player_jump = False
+        elif not (self.player_jump or userInput[pygame.K_DOWN]):
             self.player_duck = False
-            self.dino_run = True
-            self.dino_jump = False
+            self.player_run = True
+            self.player_jump = False
 
     def duck(self):
         self.image = self.duck_img [self.step_index // 5]
-        self.dino_rect = self.image.get_rect()
-        self.dino_rect.x = self.X_POS
-        self.dino_rect.y = self.Y_POS_DUCK
+        self.player_rect = self.image.get_rect()
+        self.player_rect.x = self.X_POS
+        self.player_rect.y = self.Y_POS_DUCK
         self.step_index += 1
        
     def run(self):
         self.image = self.run_img [self.step_index // 5]
-        self.dino_rect = self.image.get_rect()
-        self.dino_rect.x = self.X_POS
-        self.dino_rect.y = self.Y_POS
+        self.player_rect = self.image.get_rect()
+        self.player_rect.x = self.X_POS
+        self.player_rect.y = self.Y_POS
         self.step_index += 1
 
     def jump(self):
         self.image = self.jump_img
-        if self.dino_jump:
-            self.dino_rect.y -= self.jump_vel * 4
+        if self.player_jump:
+            self.player_rect.y -= self.jump_vel * 4
             self.jump_vel -= 0.8
         if self.jump_vel < - self.JUMP_VEL:
-            self.dino_jump = False
+            self.player_jump = False
             self.jump_vel=self.JUMP_VEL
        
-#draw the player on the screen
-    def draw(self,SCREEN):
-        SCREEN.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
+    def draw(self,SCREEN): #draw the player on the screen
+        SCREEN.blit(self.image, (self.player_rect.x, self.player_rect.y))
 
 class spaceship:
     def __init__(self):
@@ -113,7 +105,7 @@ class spaceship:
         self.image = SPACESHIP
         self.width = self.image.get_width()
 
-    def update(self):#move ufo leftward; reset when out of screen
+    def update(self):#move spaceship leftward; reset when out of screen
         self.x -= game_speed
         if self.x < -self.width:
             self.x = SCREEN_WIDTH +random.randint(2500, 3000)
@@ -162,11 +154,11 @@ class Bird(Obstacle):
         self.index += 1
 
 def main():#Main loop
-    global game_speed, x_pos_bg, y_pos_bg, points, obstacles,death_count,Ufo
+    global game_speed, x_pos_bg, y_pos_bg, points, obstacles,death_count,Spaceship
     run = True
     clock = pygame.time.Clock()
     player = Player()
-    Ufo = spaceship()
+    Spaceship = spaceship()
     game_speed = 20
     x_pos_bg = 0
     y_pos_bg = 600
@@ -216,13 +208,13 @@ def main():#Main loop
         for obstacle in obstacles:
             obstacle.draw(SCREEN)
             obstacle.update()
-            if player.dino_rect.colliderect(obstacle.rect):
+            if player.player_rect.colliderect(obstacle.rect):
                 pygame.time.delay(2000)
                 death_count += 1
                 menu(death_count)
         background()
-        Ufo.draw(SCREEN)
-        Ufo.update()
+        Spaceship.draw(SCREEN)
+        Spaceship.update()
         score()
         clock.tick(30)
         pygame.display.update()
